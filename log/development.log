@@ -7968,3 +7968,255 @@ Rendering issue_templates/show
   [4;35;1mSQL (0.2ms)[0m   [0mSELECT count(*) AS count_all FROM "boards" WHERE ("boards".project_id = 1) [0m
   [4;36;1mRepository Load (0.2ms)[0m   [0;1mSELECT * FROM "repositories" WHERE ("repositories".project_id = 1) LIMIT 1[0m
 Completed in 543ms (View: 516, DB: 4) | 200 OK [http://localhost/issue_templates/show/1]
+
+
+Processing IssueTemplatesController#index (for 127.0.0.1 at 2011-01-22 16:02:07) [GET]
+  Parameters: {"action"=>"index", "id"=>"gen-plugin", "controller"=>"issue_templates"}
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT max("settings".updated_on) AS max_updated_on FROM "settings" [0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 3) AND (users.status = 1) AND ( ("users"."type" = 'User' OR "users"."type" = 'AnonymousUser' ) ) [0m
+  [4;35;1mProject Load (0.3ms)[0m   [0mSELECT * FROM "projects" WHERE ("projects"."identifier" = 'gen-plugin') LIMIT 1[0m
+Rendering template within layouts/base
+Rendering issue_templates/index
+  [4;36;1mSetting Load (0.2ms)[0m   [0;1mSELECT * FROM "settings" WHERE ("settings"."name" = 'app_title') LIMIT 1[0m
+  [4;35;1mSetting Load (0.2ms)[0m   [0mSELECT * FROM "settings" WHERE ("settings"."name" = 'ui_theme') LIMIT 1[0m
+  [4;36;1mSetting Load (0.2ms)[0m   [0;1mSELECT * FROM "settings" WHERE ("settings"."name" = 'text_formatting') LIMIT 1[0m
+  [4;35;1mProject Load (0.3ms)[0m   [0mSELECT "projects".* FROM "projects" INNER JOIN "members" ON "projects".id = "members".project_id WHERE (("members".user_id = 3) AND ((projects.status=1))) [0m
+  [4;36;1mEnabledModule Load (0.3ms)[0m   [0;1mSELECT name FROM "enabled_modules" WHERE ("enabled_modules".project_id = 1) [0m
+  [4;35;1mProject Load (0.3ms)[0m   [0mSELECT * FROM "projects" WHERE (projects."lft" <= 1 AND projects."rgt" >= 2) ORDER BY "lft" LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "projects" WHERE (projects."lft" <= 1 AND projects."rgt" >= 2) ORDER BY "lft" LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT count(DISTINCT "versions".id) AS count_all FROM "versions" LEFT OUTER JOIN "projects" ON "projects".id = "versions".project_id WHERE (projects.id = 1 OR (projects.status = 1 AND ( versions.sharing = 'system' OR (projects.lft >= 1 AND projects.rgt <= 2 AND versions.sharing = 'tree') OR (projects.lft < 1 AND projects.rgt > 2 AND versions.sharing IN ('hierarchy', 'descendants')) OR (projects.lft > 1 AND projects.rgt < 2 AND versions.sharing = 'hierarchy')))) [0m
+  [4;35;1mWiki Load (0.2ms)[0m   [0mSELECT * FROM "wikis" WHERE ("wikis".project_id = 1) LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT count(*) AS count_all FROM "boards" WHERE ("boards".project_id = 1) [0m
+  [4;35;1mRepository Load (0.2ms)[0m   [0mSELECT * FROM "repositories" WHERE ("repositories".project_id = 1) LIMIT 1[0m
+Completed in 538ms (View: 510, DB: 3) | 200 OK [http://localhost/issue_templates/index/gen-plugin]
+
+
+Processing IssueTemplatesController#create (for 127.0.0.1 at 2011-01-22 16:02:09) [GET]
+  Parameters: {"action"=>"create", "id"=>"gen-plugin", "controller"=>"issue_templates"}
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT max("settings".updated_on) AS max_updated_on FROM "settings" [0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 3) AND (users.status = 1) AND ( ("users"."type" = 'User' OR "users"."type" = 'AnonymousUser' ) ) [0m
+  [4;36;1mProject Load (0.3ms)[0m   [0;1mSELECT * FROM "projects" WHERE ("projects"."identifier" = 'gen-plugin') LIMIT 1[0m
+  [4;35;1mSQL (1.0ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+NoMethodError (undefined method `validates_uniqueless_of' for #<Class:0xb62212b0>):
+  vendor/plugins/redmine_issue_templates/app/models/issue_template.rb:6
+  vendor/plugins/redmine_issue_templates/app/controllers/issue_templates_controller.rb:9:in `create'
+
+Rendered rescues/_trace (39.5ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing IssueTemplatesController#create (for 127.0.0.1 at 2011-01-22 16:02:36) [GET]
+  Parameters: {"action"=>"create", "id"=>"gen-plugin", "controller"=>"issue_templates"}
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT max("settings".updated_on) AS max_updated_on FROM "settings" [0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 3) AND (users.status = 1) AND ( ("users"."type" = 'User' OR "users"."type" = 'AnonymousUser' ) ) [0m
+  [4;35;1mProject Load (0.3ms)[0m   [0mSELECT * FROM "projects" WHERE ("projects"."identifier" = 'gen-plugin') LIMIT 1[0m
+Rendering template within layouts/base
+Rendering issue_templates/create
+  [4;36;1mSetting Load (0.2ms)[0m   [0;1mSELECT * FROM "settings" WHERE ("settings"."name" = 'app_title') LIMIT 1[0m
+  [4;35;1mSetting Load (0.2ms)[0m   [0mSELECT * FROM "settings" WHERE ("settings"."name" = 'ui_theme') LIMIT 1[0m
+  [4;36;1mSetting Load (0.2ms)[0m   [0;1mSELECT * FROM "settings" WHERE ("settings"."name" = 'text_formatting') LIMIT 1[0m
+  [4;35;1mProject Load (0.3ms)[0m   [0mSELECT "projects".* FROM "projects" INNER JOIN "members" ON "projects".id = "members".project_id WHERE (("members".user_id = 3) AND ((projects.status=1))) [0m
+  [4;36;1mEnabledModule Load (0.4ms)[0m   [0;1mSELECT name FROM "enabled_modules" WHERE ("enabled_modules".project_id = 1) [0m
+  [4;35;1mProject Load (0.3ms)[0m   [0mSELECT * FROM "projects" WHERE (projects."lft" <= 1 AND projects."rgt" >= 2) ORDER BY "lft" LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "projects" WHERE (projects."lft" <= 1 AND projects."rgt" >= 2) ORDER BY "lft" LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT count(DISTINCT "versions".id) AS count_all FROM "versions" LEFT OUTER JOIN "projects" ON "projects".id = "versions".project_id WHERE (projects.id = 1 OR (projects.status = 1 AND ( versions.sharing = 'system' OR (projects.lft >= 1 AND projects.rgt <= 2 AND versions.sharing = 'tree') OR (projects.lft < 1 AND projects.rgt > 2 AND versions.sharing IN ('hierarchy', 'descendants')) OR (projects.lft > 1 AND projects.rgt < 2 AND versions.sharing = 'hierarchy')))) [0m
+  [4;35;1mWiki Load (0.3ms)[0m   [0mSELECT * FROM "wikis" WHERE ("wikis".project_id = 1) LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT count(*) AS count_all FROM "boards" WHERE ("boards".project_id = 1) [0m
+  [4;35;1mRepository Load (0.2ms)[0m   [0mSELECT * FROM "repositories" WHERE ("repositories".project_id = 1) LIMIT 1[0m
+Completed in 655ms (View: 625, DB: 4) | 200 OK [http://localhost/issue_templates/create/gen-plugin]
+
+
+Processing IssueTemplatesController#create (for 127.0.0.1 at 2011-01-22 16:02:43) [POST]
+  Parameters: {"commit"=>"適用", "issue_template"=>{"title"=>"test", "note"=>"", "description"=>"test"}, "action"=>"create", "authenticity_token"=>"M1xXUR0/WLjJFOM7vEAyQIY2V5b2gVokb67Jki8JFhk=", "id"=>"gen-plugin", "controller"=>"issue_templates"}
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT max("settings".updated_on) AS max_updated_on FROM "settings" [0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 3) AND (users.status = 1) AND ( ("users"."type" = 'User' OR "users"."type" = 'AnonymousUser' ) ) [0m
+  [4;36;1mProject Load (0.3ms)[0m   [0;1mSELECT * FROM "projects" WHERE ("projects"."identifier" = 'gen-plugin') LIMIT 1[0m
+  [4;35;1mIssueTemplate Load (0.2ms)[0m   [0mSELECT "issue_templates".id FROM "issue_templates" WHERE ("issue_templates"."project_id" = 1 AND "issue_templates".project_id = 1) LIMIT 1[0m
+Rendering template within layouts/base
+Rendering issue_templates/create
+  [4;36;1mSetting Load (0.3ms)[0m   [0;1mSELECT * FROM "settings" WHERE ("settings"."name" = 'app_title') LIMIT 1[0m
+  [4;35;1mSetting Load (0.2ms)[0m   [0mSELECT * FROM "settings" WHERE ("settings"."name" = 'ui_theme') LIMIT 1[0m
+  [4;36;1mSetting Load (0.2ms)[0m   [0;1mSELECT * FROM "settings" WHERE ("settings"."name" = 'text_formatting') LIMIT 1[0m
+  [4;35;1mProject Load (0.4ms)[0m   [0mSELECT "projects".* FROM "projects" INNER JOIN "members" ON "projects".id = "members".project_id WHERE (("members".user_id = 3) AND ((projects.status=1))) [0m
+  [4;36;1mEnabledModule Load (0.4ms)[0m   [0;1mSELECT name FROM "enabled_modules" WHERE ("enabled_modules".project_id = 1) [0m
+  [4;35;1mProject Load (0.3ms)[0m   [0mSELECT * FROM "projects" WHERE (projects."lft" <= 1 AND projects."rgt" >= 2) ORDER BY "lft" LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "projects" WHERE (projects."lft" <= 1 AND projects."rgt" >= 2) ORDER BY "lft" LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT count(DISTINCT "versions".id) AS count_all FROM "versions" LEFT OUTER JOIN "projects" ON "projects".id = "versions".project_id WHERE (projects.id = 1 OR (projects.status = 1 AND ( versions.sharing = 'system' OR (projects.lft >= 1 AND projects.rgt <= 2 AND versions.sharing = 'tree') OR (projects.lft < 1 AND projects.rgt > 2 AND versions.sharing IN ('hierarchy', 'descendants')) OR (projects.lft > 1 AND projects.rgt < 2 AND versions.sharing = 'hierarchy')))) [0m
+  [4;35;1mWiki Load (0.3ms)[0m   [0mSELECT * FROM "wikis" WHERE ("wikis".project_id = 1) LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT count(*) AS count_all FROM "boards" WHERE ("boards".project_id = 1) [0m
+  [4;35;1mRepository Load (0.2ms)[0m   [0mSELECT * FROM "repositories" WHERE ("repositories".project_id = 1) LIMIT 1[0m
+Completed in 749ms (View: 715, DB: 4) | 200 OK [http://localhost/issue_templates/create/gen-plugin]
+
+
+Processing IssueTemplatesController#create (for 127.0.0.1 at 2011-01-22 16:02:47) [POST]
+  Parameters: {"commit"=>"適用", "issue_template"=>{"title"=>"test", "note"=>"", "description"=>"test"}, "action"=>"create", "authenticity_token"=>"M1xXUR0/WLjJFOM7vEAyQIY2V5b2gVokb67Jki8JFhk=", "id"=>"gen-plugin", "controller"=>"issue_templates"}
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT max("settings".updated_on) AS max_updated_on FROM "settings" [0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 3) AND (users.status = 1) AND ( ("users"."type" = 'User' OR "users"."type" = 'AnonymousUser' ) ) [0m
+  [4;36;1mProject Load (0.3ms)[0m   [0;1mSELECT * FROM "projects" WHERE ("projects"."identifier" = 'gen-plugin') LIMIT 1[0m
+  [4;35;1mIssueTemplate Load (0.2ms)[0m   [0mSELECT "issue_templates".id FROM "issue_templates" WHERE ("issue_templates"."project_id" = 1 AND "issue_templates".project_id = 1) LIMIT 1[0m
+Rendering template within layouts/base
+Rendering issue_templates/create
+  [4;36;1mSetting Load (0.3ms)[0m   [0;1mSELECT * FROM "settings" WHERE ("settings"."name" = 'app_title') LIMIT 1[0m
+  [4;35;1mSetting Load (0.2ms)[0m   [0mSELECT * FROM "settings" WHERE ("settings"."name" = 'ui_theme') LIMIT 1[0m
+  [4;36;1mSetting Load (0.2ms)[0m   [0;1mSELECT * FROM "settings" WHERE ("settings"."name" = 'text_formatting') LIMIT 1[0m
+  [4;35;1mProject Load (0.4ms)[0m   [0mSELECT "projects".* FROM "projects" INNER JOIN "members" ON "projects".id = "members".project_id WHERE (("members".user_id = 3) AND ((projects.status=1))) [0m
+  [4;36;1mEnabledModule Load (0.3ms)[0m   [0;1mSELECT name FROM "enabled_modules" WHERE ("enabled_modules".project_id = 1) [0m
+  [4;35;1mProject Load (0.3ms)[0m   [0mSELECT * FROM "projects" WHERE (projects."lft" <= 1 AND projects."rgt" >= 2) ORDER BY "lft" LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "projects" WHERE (projects."lft" <= 1 AND projects."rgt" >= 2) ORDER BY "lft" LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT count(DISTINCT "versions".id) AS count_all FROM "versions" LEFT OUTER JOIN "projects" ON "projects".id = "versions".project_id WHERE (projects.id = 1 OR (projects.status = 1 AND ( versions.sharing = 'system' OR (projects.lft >= 1 AND projects.rgt <= 2 AND versions.sharing = 'tree') OR (projects.lft < 1 AND projects.rgt > 2 AND versions.sharing IN ('hierarchy', 'descendants')) OR (projects.lft > 1 AND projects.rgt < 2 AND versions.sharing = 'hierarchy')))) [0m
+  [4;35;1mWiki Load (0.2ms)[0m   [0mSELECT * FROM "wikis" WHERE ("wikis".project_id = 1) LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT count(*) AS count_all FROM "boards" WHERE ("boards".project_id = 1) [0m
+  [4;35;1mRepository Load (0.2ms)[0m   [0mSELECT * FROM "repositories" WHERE ("repositories".project_id = 1) LIMIT 1[0m
+Completed in 673ms (View: 641, DB: 4) | 200 OK [http://localhost/issue_templates/create/gen-plugin]
+
+
+Processing IssueTemplatesController#create (for 127.0.0.1 at 2011-01-22 16:03:40) [POST]
+  Parameters: {"commit"=>"適用", "issue_template"=>{"title"=>"test", "note"=>"", "description"=>"test"}, "action"=>"create", "authenticity_token"=>"M1xXUR0/WLjJFOM7vEAyQIY2V5b2gVokb67Jki8JFhk=", "id"=>"gen-plugin", "controller"=>"issue_templates"}
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT max("settings".updated_on) AS max_updated_on FROM "settings" [0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 3) AND (users.status = 1) AND ( ("users"."type" = 'User' OR "users"."type" = 'AnonymousUser' ) ) [0m
+  [4;36;1mProject Load (0.3ms)[0m   [0;1mSELECT * FROM "projects" WHERE ("projects"."identifier" = 'gen-plugin') LIMIT 1[0m
+  [4;35;1mIssueTemplate Load (0.2ms)[0m   [0mSELECT "issue_templates".id FROM "issue_templates" WHERE ("issue_templates"."project_id" = 1 AND "issue_templates".project_id = 1) LIMIT 1[0m
+Rendering template within layouts/base
+Rendering issue_templates/create
+
+ActionView::TemplateError (undefined method `erro_messages_for' for #<ActionView::Base:0xb640c818>) on line #3 of vendor/plugins/redmine_issue_templates/app/views/issue_templates/create.html.erb:
+1: <h2>IssueTemplates#create</h2>
+2: 
+3: <%= erro_messages_for 'issue_template' %>
+4: <% labelled_tabular_form_for :issue_template, @issue_template, :action => 'update' do |f|%>
+5:     <p>
+6:       <%= f.text_field :title, :size => 50, :required => true %>
+
+    vendor/plugins/redmine_issue_templates/app/views/issue_templates/create.html.erb:3
+
+Rendered rescues/_trace (42.2ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing IssueTemplatesController#create (for 127.0.0.1 at 2011-01-22 16:03:48) [POST]
+  Parameters: {"commit"=>"適用", "issue_template"=>{"title"=>"test", "note"=>"", "description"=>"test"}, "action"=>"create", "authenticity_token"=>"M1xXUR0/WLjJFOM7vEAyQIY2V5b2gVokb67Jki8JFhk=", "id"=>"gen-plugin", "controller"=>"issue_templates"}
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT max("settings".updated_on) AS max_updated_on FROM "settings" [0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 3) AND (users.status = 1) AND ( ("users"."type" = 'User' OR "users"."type" = 'AnonymousUser' ) ) [0m
+  [4;36;1mProject Load (0.3ms)[0m   [0;1mSELECT * FROM "projects" WHERE ("projects"."identifier" = 'gen-plugin') LIMIT 1[0m
+  [4;35;1mIssueTemplate Load (0.2ms)[0m   [0mSELECT "issue_templates".id FROM "issue_templates" WHERE ("issue_templates"."project_id" = 1 AND "issue_templates".project_id = 1) LIMIT 1[0m
+Rendering template within layouts/base
+Rendering issue_templates/create
+  [4;36;1mSetting Load (0.2ms)[0m   [0;1mSELECT * FROM "settings" WHERE ("settings"."name" = 'app_title') LIMIT 1[0m
+  [4;35;1mSetting Load (0.2ms)[0m   [0mSELECT * FROM "settings" WHERE ("settings"."name" = 'ui_theme') LIMIT 1[0m
+  [4;36;1mSetting Load (0.2ms)[0m   [0;1mSELECT * FROM "settings" WHERE ("settings"."name" = 'text_formatting') LIMIT 1[0m
+  [4;35;1mProject Load (0.4ms)[0m   [0mSELECT "projects".* FROM "projects" INNER JOIN "members" ON "projects".id = "members".project_id WHERE (("members".user_id = 3) AND ((projects.status=1))) [0m
+  [4;36;1mEnabledModule Load (0.3ms)[0m   [0;1mSELECT name FROM "enabled_modules" WHERE ("enabled_modules".project_id = 1) [0m
+  [4;35;1mProject Load (0.3ms)[0m   [0mSELECT * FROM "projects" WHERE (projects."lft" <= 1 AND projects."rgt" >= 2) ORDER BY "lft" LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "projects" WHERE (projects."lft" <= 1 AND projects."rgt" >= 2) ORDER BY "lft" LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT count(DISTINCT "versions".id) AS count_all FROM "versions" LEFT OUTER JOIN "projects" ON "projects".id = "versions".project_id WHERE (projects.id = 1 OR (projects.status = 1 AND ( versions.sharing = 'system' OR (projects.lft >= 1 AND projects.rgt <= 2 AND versions.sharing = 'tree') OR (projects.lft < 1 AND projects.rgt > 2 AND versions.sharing IN ('hierarchy', 'descendants')) OR (projects.lft > 1 AND projects.rgt < 2 AND versions.sharing = 'hierarchy')))) [0m
+  [4;35;1mWiki Load (0.2ms)[0m   [0mSELECT * FROM "wikis" WHERE ("wikis".project_id = 1) LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT count(*) AS count_all FROM "boards" WHERE ("boards".project_id = 1) [0m
+  [4;35;1mRepository Load (0.2ms)[0m   [0mSELECT * FROM "repositories" WHERE ("repositories".project_id = 1) LIMIT 1[0m
+Completed in 551ms (View: 517, DB: 3) | 200 OK [http://localhost/issue_templates/create/gen-plugin]
+
+
+Processing IssueTemplatesController#create (for 127.0.0.1 at 2011-01-22 16:04:03) [POST]
+  Parameters: {"commit"=>"適用", "issue_template"=>{"title"=>"", "note"=>"", "description"=>"test"}, "action"=>"create", "authenticity_token"=>"M1xXUR0/WLjJFOM7vEAyQIY2V5b2gVokb67Jki8JFhk=", "id"=>"gen-plugin", "controller"=>"issue_templates"}
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT max("settings".updated_on) AS max_updated_on FROM "settings" [0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 3) AND (users.status = 1) AND ( ("users"."type" = 'User' OR "users"."type" = 'AnonymousUser' ) ) [0m
+  [4;36;1mProject Load (0.3ms)[0m   [0;1mSELECT * FROM "projects" WHERE ("projects"."identifier" = 'gen-plugin') LIMIT 1[0m
+  [4;35;1mIssueTemplate Load (0.2ms)[0m   [0mSELECT "issue_templates".id FROM "issue_templates" WHERE ("issue_templates"."project_id" = 1 AND "issue_templates".project_id = 1) LIMIT 1[0m
+Rendering template within layouts/base
+Rendering issue_templates/create
+  [4;36;1mSetting Load (0.3ms)[0m   [0;1mSELECT * FROM "settings" WHERE ("settings"."name" = 'app_title') LIMIT 1[0m
+  [4;35;1mSetting Load (0.2ms)[0m   [0mSELECT * FROM "settings" WHERE ("settings"."name" = 'ui_theme') LIMIT 1[0m
+  [4;36;1mSetting Load (0.2ms)[0m   [0;1mSELECT * FROM "settings" WHERE ("settings"."name" = 'text_formatting') LIMIT 1[0m
+  [4;35;1mProject Load (0.4ms)[0m   [0mSELECT "projects".* FROM "projects" INNER JOIN "members" ON "projects".id = "members".project_id WHERE (("members".user_id = 3) AND ((projects.status=1))) [0m
+  [4;36;1mEnabledModule Load (0.3ms)[0m   [0;1mSELECT name FROM "enabled_modules" WHERE ("enabled_modules".project_id = 1) [0m
+  [4;35;1mProject Load (0.3ms)[0m   [0mSELECT * FROM "projects" WHERE (projects."lft" <= 1 AND projects."rgt" >= 2) ORDER BY "lft" LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "projects" WHERE (projects."lft" <= 1 AND projects."rgt" >= 2) ORDER BY "lft" LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT count(DISTINCT "versions".id) AS count_all FROM "versions" LEFT OUTER JOIN "projects" ON "projects".id = "versions".project_id WHERE (projects.id = 1 OR (projects.status = 1 AND ( versions.sharing = 'system' OR (projects.lft >= 1 AND projects.rgt <= 2 AND versions.sharing = 'tree') OR (projects.lft < 1 AND projects.rgt > 2 AND versions.sharing IN ('hierarchy', 'descendants')) OR (projects.lft > 1 AND projects.rgt < 2 AND versions.sharing = 'hierarchy')))) [0m
+  [4;35;1mWiki Load (0.2ms)[0m   [0mSELECT * FROM "wikis" WHERE ("wikis".project_id = 1) LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT count(*) AS count_all FROM "boards" WHERE ("boards".project_id = 1) [0m
+  [4;35;1mRepository Load (0.2ms)[0m   [0mSELECT * FROM "repositories" WHERE ("repositories".project_id = 1) LIMIT 1[0m
+Completed in 694ms (View: 658, DB: 4) | 200 OK [http://localhost/issue_templates/create/gen-plugin]
+
+
+Processing IssueTemplatesController#create (for 127.0.0.1 at 2011-01-22 16:04:13) [POST]
+  Parameters: {"commit"=>"適用", "issue_template"=>{"title"=>"", "note"=>"", "description"=>"\r\n"}, "action"=>"create", "authenticity_token"=>"M1xXUR0/WLjJFOM7vEAyQIY2V5b2gVokb67Jki8JFhk=", "id"=>"gen-plugin", "controller"=>"issue_templates"}
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT max("settings".updated_on) AS max_updated_on FROM "settings" [0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 3) AND (users.status = 1) AND ( ("users"."type" = 'User' OR "users"."type" = 'AnonymousUser' ) ) [0m
+  [4;36;1mProject Load (0.3ms)[0m   [0;1mSELECT * FROM "projects" WHERE ("projects"."identifier" = 'gen-plugin') LIMIT 1[0m
+  [4;35;1mIssueTemplate Load (0.2ms)[0m   [0mSELECT "issue_templates".id FROM "issue_templates" WHERE ("issue_templates"."project_id" = 1 AND "issue_templates".project_id = 1) LIMIT 1[0m
+Rendering template within layouts/base
+Rendering issue_templates/create
+  [4;36;1mSetting Load (0.2ms)[0m   [0;1mSELECT * FROM "settings" WHERE ("settings"."name" = 'app_title') LIMIT 1[0m
+  [4;35;1mSetting Load (0.2ms)[0m   [0mSELECT * FROM "settings" WHERE ("settings"."name" = 'ui_theme') LIMIT 1[0m
+  [4;36;1mSetting Load (0.2ms)[0m   [0;1mSELECT * FROM "settings" WHERE ("settings"."name" = 'text_formatting') LIMIT 1[0m
+  [4;35;1mProject Load (0.4ms)[0m   [0mSELECT "projects".* FROM "projects" INNER JOIN "members" ON "projects".id = "members".project_id WHERE (("members".user_id = 3) AND ((projects.status=1))) [0m
+  [4;36;1mEnabledModule Load (0.4ms)[0m   [0;1mSELECT name FROM "enabled_modules" WHERE ("enabled_modules".project_id = 1) [0m
+  [4;35;1mProject Load (0.4ms)[0m   [0mSELECT * FROM "projects" WHERE (projects."lft" <= 1 AND projects."rgt" >= 2) ORDER BY "lft" LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "projects" WHERE (projects."lft" <= 1 AND projects."rgt" >= 2) ORDER BY "lft" LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT count(DISTINCT "versions".id) AS count_all FROM "versions" LEFT OUTER JOIN "projects" ON "projects".id = "versions".project_id WHERE (projects.id = 1 OR (projects.status = 1 AND ( versions.sharing = 'system' OR (projects.lft >= 1 AND projects.rgt <= 2 AND versions.sharing = 'tree') OR (projects.lft < 1 AND projects.rgt > 2 AND versions.sharing IN ('hierarchy', 'descendants')) OR (projects.lft > 1 AND projects.rgt < 2 AND versions.sharing = 'hierarchy')))) [0m
+  [4;35;1mWiki Load (0.2ms)[0m   [0mSELECT * FROM "wikis" WHERE ("wikis".project_id = 1) LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT count(*) AS count_all FROM "boards" WHERE ("boards".project_id = 1) [0m
+  [4;35;1mRepository Load (0.2ms)[0m   [0mSELECT * FROM "repositories" WHERE ("repositories".project_id = 1) LIMIT 1[0m
+Completed in 721ms (View: 686, DB: 4) | 200 OK [http://localhost/issue_templates/create/gen-plugin]
+
+
+Processing IssueTemplatesController#create (for 127.0.0.1 at 2011-01-22 16:04:48) [POST]
+  Parameters: {"commit"=>"適用", "issue_template"=>{"title"=>"", "note"=>"", "description"=>"\r\n"}, "action"=>"create", "authenticity_token"=>"M1xXUR0/WLjJFOM7vEAyQIY2V5b2gVokb67Jki8JFhk=", "id"=>"gen-plugin", "controller"=>"issue_templates"}
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT max("settings".updated_on) AS max_updated_on FROM "settings" [0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 3) AND (users.status = 1) AND ( ("users"."type" = 'User' OR "users"."type" = 'AnonymousUser' ) ) [0m
+  [4;36;1mProject Load (0.3ms)[0m   [0;1mSELECT * FROM "projects" WHERE ("projects"."identifier" = 'gen-plugin') LIMIT 1[0m
+  [4;35;1mIssueTemplate Load (0.2ms)[0m   [0mSELECT "issue_templates".id FROM "issue_templates" WHERE ("issue_templates"."title" = '' AND "issue_templates".project_id = 1) LIMIT 1[0m
+Rendering template within layouts/base
+Rendering issue_templates/create
+  [4;36;1mSetting Load (0.2ms)[0m   [0;1mSELECT * FROM "settings" WHERE ("settings"."name" = 'app_title') LIMIT 1[0m
+  [4;35;1mSetting Load (0.3ms)[0m   [0mSELECT * FROM "settings" WHERE ("settings"."name" = 'ui_theme') LIMIT 1[0m
+  [4;36;1mSetting Load (0.2ms)[0m   [0;1mSELECT * FROM "settings" WHERE ("settings"."name" = 'text_formatting') LIMIT 1[0m
+  [4;35;1mProject Load (0.4ms)[0m   [0mSELECT "projects".* FROM "projects" INNER JOIN "members" ON "projects".id = "members".project_id WHERE (("members".user_id = 3) AND ((projects.status=1))) [0m
+  [4;36;1mEnabledModule Load (0.4ms)[0m   [0;1mSELECT name FROM "enabled_modules" WHERE ("enabled_modules".project_id = 1) [0m
+  [4;35;1mProject Load (0.3ms)[0m   [0mSELECT * FROM "projects" WHERE (projects."lft" <= 1 AND projects."rgt" >= 2) ORDER BY "lft" LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "projects" WHERE (projects."lft" <= 1 AND projects."rgt" >= 2) ORDER BY "lft" LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT count(DISTINCT "versions".id) AS count_all FROM "versions" LEFT OUTER JOIN "projects" ON "projects".id = "versions".project_id WHERE (projects.id = 1 OR (projects.status = 1 AND ( versions.sharing = 'system' OR (projects.lft >= 1 AND projects.rgt <= 2 AND versions.sharing = 'tree') OR (projects.lft < 1 AND projects.rgt > 2 AND versions.sharing IN ('hierarchy', 'descendants')) OR (projects.lft > 1 AND projects.rgt < 2 AND versions.sharing = 'hierarchy')))) [0m
+  [4;35;1mWiki Load (0.3ms)[0m   [0mSELECT * FROM "wikis" WHERE ("wikis".project_id = 1) LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT count(*) AS count_all FROM "boards" WHERE ("boards".project_id = 1) [0m
+  [4;35;1mRepository Load (0.2ms)[0m   [0mSELECT * FROM "repositories" WHERE ("repositories".project_id = 1) LIMIT 1[0m
+Completed in 737ms (View: 702, DB: 4) | 200 OK [http://localhost/issue_templates/create/gen-plugin]
+
+
+Processing IssueTemplatesController#create (for 127.0.0.1 at 2011-01-22 16:04:54) [POST]
+  Parameters: {"commit"=>"適用", "issue_template"=>{"title"=>"test", "note"=>"", "description"=>"test"}, "action"=>"create", "authenticity_token"=>"M1xXUR0/WLjJFOM7vEAyQIY2V5b2gVokb67Jki8JFhk=", "id"=>"gen-plugin", "controller"=>"issue_templates"}
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT max("settings".updated_on) AS max_updated_on FROM "settings" [0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 3) AND (users.status = 1) AND ( ("users"."type" = 'User' OR "users"."type" = 'AnonymousUser' ) ) [0m
+  [4;36;1mProject Load (0.3ms)[0m   [0;1mSELECT * FROM "projects" WHERE ("projects"."identifier" = 'gen-plugin') LIMIT 1[0m
+  [4;35;1mIssueTemplate Load (0.2ms)[0m   [0mSELECT "issue_templates".id FROM "issue_templates" WHERE ("issue_templates"."title" = 'test' AND "issue_templates".project_id = 1) LIMIT 1[0m
+Rendering template within layouts/base
+Rendering issue_templates/create
+  [4;36;1mSetting Load (0.2ms)[0m   [0;1mSELECT * FROM "settings" WHERE ("settings"."name" = 'app_title') LIMIT 1[0m
+  [4;35;1mSetting Load (0.2ms)[0m   [0mSELECT * FROM "settings" WHERE ("settings"."name" = 'ui_theme') LIMIT 1[0m
+  [4;36;1mSetting Load (0.2ms)[0m   [0;1mSELECT * FROM "settings" WHERE ("settings"."name" = 'text_formatting') LIMIT 1[0m
+  [4;35;1mProject Load (0.3ms)[0m   [0mSELECT "projects".* FROM "projects" INNER JOIN "members" ON "projects".id = "members".project_id WHERE (("members".user_id = 3) AND ((projects.status=1))) [0m
+  [4;36;1mEnabledModule Load (0.3ms)[0m   [0;1mSELECT name FROM "enabled_modules" WHERE ("enabled_modules".project_id = 1) [0m
+  [4;35;1mProject Load (0.3ms)[0m   [0mSELECT * FROM "projects" WHERE (projects."lft" <= 1 AND projects."rgt" >= 2) ORDER BY "lft" LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "projects" WHERE (projects."lft" <= 1 AND projects."rgt" >= 2) ORDER BY "lft" LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT count(DISTINCT "versions".id) AS count_all FROM "versions" LEFT OUTER JOIN "projects" ON "projects".id = "versions".project_id WHERE (projects.id = 1 OR (projects.status = 1 AND ( versions.sharing = 'system' OR (projects.lft >= 1 AND projects.rgt <= 2 AND versions.sharing = 'tree') OR (projects.lft < 1 AND projects.rgt > 2 AND versions.sharing IN ('hierarchy', 'descendants')) OR (projects.lft > 1 AND projects.rgt < 2 AND versions.sharing = 'hierarchy')))) [0m
+  [4;35;1mWiki Load (0.2ms)[0m   [0mSELECT * FROM "wikis" WHERE ("wikis".project_id = 1) LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT count(*) AS count_all FROM "boards" WHERE ("boards".project_id = 1) [0m
+  [4;35;1mRepository Load (0.2ms)[0m   [0mSELECT * FROM "repositories" WHERE ("repositories".project_id = 1) LIMIT 1[0m
+Completed in 575ms (View: 541, DB: 3) | 200 OK [http://localhost/issue_templates/create/gen-plugin]

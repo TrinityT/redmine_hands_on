@@ -1,5 +1,6 @@
 <h2>IssueTemplates#create</h2>
 
+<%= error_messages_for 'issue_template' %>
 <% labelled_tabular_form_for :issue_template, @issue_template, :action => 'update' do |f|%>
     <p>
       <%= f.text_field :title, :size => 50, :required => true %>
