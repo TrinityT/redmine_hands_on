@@ -7471,3 +7471,182 @@ Rendering issue_templates/create
   [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT count(*) AS count_all FROM "boards" WHERE ("boards".project_id = 1) [0m
   [4;35;1mRepository Load (0.2ms)[0m   [0mSELECT * FROM "repositories" WHERE ("repositories".project_id = 1) LIMIT 1[0m
 Completed in 668ms (View: 548, DB: 3) | 200 OK [http://localhost/issue_templates/create/gen-plugin]
+
+
+Processing ProjectsController#settings (for 127.0.0.1 at 2011-01-22 15:27:57) [GET]
+  Parameters: {"action"=>"settings", "id"=>"gen-plugin", "controller"=>"projects"}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT max("settings".updated_on) AS max_updated_on FROM "settings" [0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 3) AND (users.status = 1) AND ( ("users"."type" = 'User' OR "users"."type" = 'AnonymousUser' ) ) [0m
+  [4;36;1mProject Load (0.4ms)[0m   [0;1mSELECT * FROM "projects" WHERE ("projects"."identifier" = 'gen-plugin') LIMIT 1[0m
+  [4;35;1mEnabledModule Load (0.4ms)[0m   [0mSELECT name FROM "enabled_modules" WHERE ("enabled_modules".project_id = 1) [0m
+  [4;36;1mIssueCustomField Load (0.3ms)[0m   [0;1mSELECT * FROM "custom_fields" WHERE ( ("custom_fields"."type" = 'IssueCustomField' ) ) ORDER BY custom_fields.position[0m
+  [4;35;1mTracker Load (0.3ms)[0m   [0mSELECT * FROM "trackers" ORDER BY position[0m
+  [4;36;1mRepository Load (0.2ms)[0m   [0;1mSELECT * FROM "repositories" WHERE ("repositories".project_id = 1) LIMIT 1[0m
+  [4;35;1mWiki Load (0.2ms)[0m   [0mSELECT * FROM "wikis" WHERE ("wikis".project_id = 1) LIMIT 1[0m
+Rendering template within layouts/base
+Rendering projects/settings
+  [4;36;1mProject Load (0.3ms)[0m   [0;1mSELECT * FROM "projects" WHERE (projects.status=1) [0m
+  [4;35;1mProject Load (0.2ms)[0m   [0mSELECT * FROM "projects" WHERE (projects."lft" >= 1 AND projects."rgt" <= 2) ORDER BY "lft"[0m
+  [4;36;1mSetting Load (0.2ms)[0m   [0;1mSELECT * FROM "settings" WHERE ("settings"."name" = 'text_formatting') LIMIT 1[0m
+  [4;35;1mCustomField Load (0.3ms)[0m   [0mSELECT * FROM "custom_fields" WHERE (type = 'ProjectCustomField') ORDER BY position[0m
+  [4;36;1mEnabledModule Load (0.3ms)[0m   [0;1mSELECT * FROM "enabled_modules" WHERE ("enabled_modules".project_id = 1) [0m
+  [4;35;1mTracker Load (0.2ms)[0m   [0mSELECT "trackers".id FROM "trackers" INNER JOIN "projects_trackers" ON "trackers".id = "projects_trackers".tracker_id WHERE ("trackers"."id" = 1) AND ("projects_trackers".project_id = 1 ) ORDER BY trackers.position LIMIT 1[0m
+  [4;36;1mTracker Load (0.2ms)[0m   [0;1mSELECT "trackers".id FROM "trackers" INNER JOIN "projects_trackers" ON "trackers".id = "projects_trackers".tracker_id WHERE ("trackers"."id" = 2) AND ("projects_trackers".project_id = 1 ) ORDER BY trackers.position LIMIT 1[0m
+  [4;35;1mTracker Load (0.3ms)[0m   [0mSELECT "trackers".id FROM "trackers" INNER JOIN "projects_trackers" ON "trackers".id = "projects_trackers".tracker_id WHERE ("trackers"."id" = 3) AND ("projects_trackers".project_id = 1 ) ORDER BY trackers.position LIMIT 1[0m
+Rendered projects/_form (122.1ms)
+Rendered projects/_edit (128.3ms)
+Rendered projects/settings/_modules (7.9ms)
+  [4;36;1mRole Load (0.4ms)[0m   [0;1mSELECT * FROM "roles" WHERE ("roles"."builtin" = 0) ORDER BY position[0m
+  [4;35;1mMember Load Including Associations (0.6ms)[0m   [0mSELECT "members"."id" AS t0_r0, "members"."user_id" AS t0_r1, "members"."project_id" AS t0_r2, "members"."created_on" AS t0_r3, "members"."mail_notification" AS t0_r4, "roles"."id" AS t1_r0, "roles"."name" AS t1_r1, "roles"."position" AS t1_r2, "roles"."assignable" AS t1_r3, "roles"."builtin" AS t1_r4, "roles"."permissions" AS t1_r5, "users"."id" AS t2_r0, "users"."login" AS t2_r1, "users"."hashed_password" AS t2_r2, "users"."firstname" AS t2_r3, "users"."lastname" AS t2_r4, "users"."mail" AS t2_r5, "users"."admin" AS t2_r6, "users"."status" AS t2_r7, "users"."last_login_on" AS t2_r8, "users"."language" AS t2_r9, "users"."auth_source_id" AS t2_r10, "users"."created_on" AS t2_r11, "users"."updated_on" AS t2_r12, "users"."type" AS t2_r13, "users"."identity_url" AS t2_r14, "users"."mail_notification" AS t2_r15 FROM "members" LEFT OUTER JOIN "member_roles" ON ("members"."id" = "member_roles"."member_id") LEFT OUTER JOIN "roles" ON ("roles"."id" = "member_roles"."role_id") LEFT OUTER JOIN "users" ON "users".id = "members".user_id WHERE ("members".project_id = 1 AND (users.type='Group' OR (users.type='User' AND users.status=1))) [0m
+  [4;36;1mSetting Load (0.2ms)[0m   [0;1mSELECT * FROM "settings" WHERE ("settings"."name" = 'user_format') LIMIT 1[0m
+  [4;35;1mMemberRole Load (0.2ms)[0m   [0mSELECT * FROM "member_roles" WHERE ("member_roles".member_id = 1) [0m
+  [4;36;1mPrincipal Load (0.6ms)[0m   [0;1mSELECT * FROM "users" WHERE (users.type='Group' OR (users.type='User' AND users.status = 1)) ORDER BY type, login, lastname ASC LIMIT 100[0m
+  [4;35;1mPrincipal Load (0.4ms)[0m   [0mSELECT "users".* FROM "users" INNER JOIN "members" ON "users".id = "members".user_id WHERE (("members".project_id = 1) AND ((users.type='Group' OR (users.type='User' AND users.status=1)))) [0m
+Rendered projects/settings/_members (42.1ms)
+  [4;36;1mProject Load (0.3ms)[0m   [0;1mSELECT * FROM "projects" WHERE (projects."lft" <= 1 AND projects."rgt" >= 2) ORDER BY "lft" LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "projects" WHERE (projects."lft" <= 1 AND projects."rgt" >= 2) ORDER BY "lft" LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT count(DISTINCT "versions".id) AS count_all FROM "versions" LEFT OUTER JOIN "projects" ON "projects".id = "versions".project_id WHERE (projects.id = 1 OR (projects.status = 1 AND ( versions.sharing = 'system' OR (projects.lft >= 1 AND projects.rgt <= 2 AND versions.sharing = 'tree') OR (projects.lft < 1 AND projects.rgt > 2 AND versions.sharing IN ('hierarchy', 'descendants')) OR (projects.lft > 1 AND projects.rgt < 2 AND versions.sharing = 'hierarchy')))) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT count(*) AS count_all FROM "versions" WHERE ("versions".project_id = 1) [0m
+Rendered projects/settings/_versions (6.1ms)
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT count(*) AS count_all FROM "issue_categories" WHERE ("issue_categories".project_id = 1) [0m
+Rendered projects/settings/_issue_categories (1.4ms)
+Rendered projects/settings/_wiki (4.6ms)
+  [4;36;1mSetting Load (0.2ms)[0m   [0;1mSELECT * FROM "settings" WHERE ("settings"."name" = 'enabled_scm') LIMIT 1[0m
+Rendered projects/settings/_repository (5.2ms)
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT count(*) AS count_all FROM "boards" WHERE ("boards".project_id = 1) [0m
+Rendered projects/settings/_boards (8.2ms)
+  [4;36;1mCustomField Load (0.2ms)[0m   [0;1mSELECT * FROM "custom_fields" WHERE (type = 'TimeEntryActivityCustomField') ORDER BY position[0m
+  [4;35;1mTimeEntryActivity Load (0.2ms)[0m   [0mSELECT * FROM "enumerations" WHERE ("enumerations".project_id = 1) AND ( ("enumerations"."type" = 'TimeEntryActivity' ) ) ORDER BY enumerations.position ASC[0m
+  [4;36;1mTimeEntryActivity Load (0.3ms)[0m   [0;1mSELECT * FROM "enumerations" WHERE ("enumerations"."project_id" IS NULL) AND ( ("enumerations"."type" = 'TimeEntryActivity' ) ) ORDER BY enumerations.position ASC[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "custom_fields" WHERE (type = 'TimeEntryActivityCustomField') ORDER BY position[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "custom_fields" WHERE (type = 'TimeEntryActivityCustomField') ORDER BY position[0m
+Rendered projects/settings/_activities (114.7ms)
+Rendered common/_tabs (329.1ms)
+  [4;35;1mSetting Load (0.2ms)[0m   [0mSELECT * FROM "settings" WHERE ("settings"."name" = 'app_title') LIMIT 1[0m
+  [4;36;1mSetting Load (0.3ms)[0m   [0;1mSELECT * FROM "settings" WHERE ("settings"."name" = 'ui_theme') LIMIT 1[0m
+  [4;35;1mProject Load (0.3ms)[0m   [0mSELECT "projects".* FROM "projects" INNER JOIN "members" ON "projects".id = "members".project_id WHERE (("members".user_id = 3) AND ((projects.status=1))) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT count(DISTINCT "versions".id) AS count_all FROM "versions" LEFT OUTER JOIN "projects" ON "projects".id = "versions".project_id WHERE (projects.id = 1 OR (projects.status = 1 AND ( versions.sharing = 'system' OR (projects.lft >= 1 AND projects.rgt <= 2 AND versions.sharing = 'tree') OR (projects.lft < 1 AND projects.rgt > 2 AND versions.sharing IN ('hierarchy', 'descendants')) OR (projects.lft > 1 AND projects.rgt < 2 AND versions.sharing = 'hierarchy')))) [0m
+Completed in 893ms (View: 831, DB: 10) | 200 OK [http://localhost/projects/gen-plugin/settings]
+
+
+Processing ProjectsController#show (for 127.0.0.1 at 2011-01-22 15:31:49) [GET]
+  Parameters: {"action"=>"show", "id"=>"gen-plugin", "controller"=>"projects"}
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT max("settings".updated_on) AS max_updated_on FROM "settings" [0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 3) AND (users.status = 1) AND ( ("users"."type" = 'User' OR "users"."type" = 'AnonymousUser' ) ) [0m
+  [4;35;1mProject Load (0.3ms)[0m   [0mSELECT * FROM "projects" WHERE ("projects"."identifier" = 'gen-plugin') LIMIT 1[0m
+  [4;36;1mEnabledModule Load (0.4ms)[0m   [0;1mSELECT name FROM "enabled_modules" WHERE ("enabled_modules".project_id = 1) [0m
+  [4;35;1mMember Load Including Associations (0.5ms)[0m   [0mSELECT "members"."id" AS t0_r0, "members"."user_id" AS t0_r1, "members"."project_id" AS t0_r2, "members"."created_on" AS t0_r3, "members"."mail_notification" AS t0_r4, "users"."id" AS t1_r0, "users"."login" AS t1_r1, "users"."hashed_password" AS t1_r2, "users"."firstname" AS t1_r3, "users"."lastname" AS t1_r4, "users"."mail" AS t1_r5, "users"."admin" AS t1_r6, "users"."status" AS t1_r7, "users"."last_login_on" AS t1_r8, "users"."language" AS t1_r9, "users"."auth_source_id" AS t1_r10, "users"."created_on" AS t1_r11, "users"."updated_on" AS t1_r12, "users"."type" AS t1_r13, "users"."identity_url" AS t1_r14, "users"."mail_notification" AS t1_r15, "roles"."id" AS t2_r0, "roles"."name" AS t2_r1, "roles"."position" AS t2_r2, "roles"."assignable" AS t2_r3, "roles"."builtin" AS t2_r4, "roles"."permissions" AS t2_r5 FROM "members" LEFT OUTER JOIN "users" ON "users".id = "members".user_id AND ("users"."type" = 'User' OR "users"."type" = 'AnonymousUser' ) LEFT OUTER JOIN "member_roles" ON ("members"."id" = "member_roles"."member_id") LEFT OUTER JOIN "roles" ON ("roles"."id" = "member_roles"."role_id") WHERE ("members".project_id = 1 AND (users.type='User' AND users.status=1)) [0m
+  [4;36;1mNews Load (0.2ms)[0m   [0;1mSELECT * FROM "news" WHERE ("news".project_id = 1) ORDER BY news.created_on DESC LIMIT 5[0m
+  [4;35;1mTracker Load Including Associations (0.8ms)[0m   [0mSELECT "trackers"."id" AS t0_r0, "trackers"."name" AS t0_r1, "trackers"."is_in_chlog" AS t0_r2, "trackers"."position" AS t0_r3, "trackers"."is_in_roadmap" AS t0_r4, "projects"."id" AS t1_r0, "projects"."name" AS t1_r1, "projects"."description" AS t1_r2, "projects"."homepage" AS t1_r3, "projects"."is_public" AS t1_r4, "projects"."parent_id" AS t1_r5, "projects"."created_on" AS t1_r6, "projects"."updated_on" AS t1_r7, "projects"."identifier" AS t1_r8, "projects"."status" AS t1_r9, "projects"."lft" AS t1_r10, "projects"."rgt" AS t1_r11 FROM "trackers" LEFT OUTER JOIN "projects_trackers" ON "projects_trackers".tracker_id = "trackers".id LEFT OUTER JOIN "projects" ON "projects".id = "projects_trackers".project_id WHERE (projects.lft >= 1 AND projects.rgt <= 2 AND projects.status = 1) ORDER BY trackers.position[0m
+  [4;36;1mSetting Load (0.2ms)[0m   [0;1mSELECT * FROM "settings" WHERE ("settings"."name" = 'display_subprojects_issues') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT count(DISTINCT "issues".id) AS count_all, tracker_id AS tracker_id FROM "issues" LEFT OUTER JOIN "projects" ON "projects".id = "issues".project_id LEFT OUTER JOIN "issue_statuses" ON "issue_statuses".id = "issues".status_id LEFT OUTER JOIN "trackers" ON "trackers".id = "issues".tracker_id WHERE (((projects.id = 1 OR (projects.lft > 1 AND projects.rgt < 2))) AND issue_statuses.is_closed='f') AND (projects.status=1 AND projects.id IN (SELECT em.project_id FROM enabled_modules em WHERE em.name='issue_tracking')) GROUP BY tracker_id [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT count(DISTINCT "issues".id) AS count_all, tracker_id AS tracker_id FROM "issues" LEFT OUTER JOIN "projects" ON "projects".id = "issues".project_id LEFT OUTER JOIN "issue_statuses" ON "issue_statuses".id = "issues".status_id LEFT OUTER JOIN "trackers" ON "trackers".id = "issues".tracker_id WHERE ((projects.id = 1 OR (projects.lft > 1 AND projects.rgt < 2))) AND (projects.status=1 AND projects.id IN (SELECT em.project_id FROM enabled_modules em WHERE em.name='issue_tracking')) GROUP BY tracker_id [0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT sum("time_entries".hours) AS sum_hours FROM "time_entries" LEFT OUTER JOIN "projects" ON "projects".id = "time_entries".project_id WHERE ((projects.id = 1 OR (projects.lft > 1 AND projects.rgt < 2))) AND (projects.status=1 AND projects.id IN (SELECT em.project_id FROM enabled_modules em WHERE em.name='time_tracking')) [0m
+  [4;35;1mToken Load (0.3ms)[0m   [0mSELECT * FROM "tokens" WHERE ("tokens".user_id = 3 AND (action='feeds')) LIMIT 1[0m
+Rendering template within layouts/base
+Rendering projects/show
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT count(*) AS count_all FROM "projects" WHERE ((projects.status=1) AND ("projects"."parent_id" = 1)) [0m
+  [4;35;1mCustomField Load (0.2ms)[0m   [0mSELECT * FROM "custom_fields" WHERE (type = 'ProjectCustomField') ORDER BY position[0m
+  [4;36;1mSetting Load (0.2ms)[0m   [0;1mSELECT * FROM "settings" WHERE ("settings"."name" = 'user_format') LIMIT 1[0m
+Rendered projects/_members_box (1.4ms)
+  [4;35;1mSetting Load (0.2ms)[0m   [0mSELECT * FROM "settings" WHERE ("settings"."name" = 'app_title') LIMIT 1[0m
+  [4;36;1mSetting Load (0.3ms)[0m   [0;1mSELECT * FROM "settings" WHERE ("settings"."name" = 'ui_theme') LIMIT 1[0m
+  [4;35;1mSetting Load (0.2ms)[0m   [0mSELECT * FROM "settings" WHERE ("settings"."name" = 'text_formatting') LIMIT 1[0m
+  [4;36;1mProject Load (0.3ms)[0m   [0;1mSELECT "projects".* FROM "projects" INNER JOIN "members" ON "projects".id = "members".project_id WHERE (("members".user_id = 3) AND ((projects.status=1))) [0m
+  [4;35;1mProject Load (0.3ms)[0m   [0mSELECT * FROM "projects" WHERE (projects."lft" <= 1 AND projects."rgt" >= 2) ORDER BY "lft" LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "projects" WHERE (projects."lft" <= 1 AND projects."rgt" >= 2) ORDER BY "lft" LIMIT 1[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT count(DISTINCT "versions".id) AS count_all FROM "versions" LEFT OUTER JOIN "projects" ON "projects".id = "versions".project_id WHERE (projects.id = 1 OR (projects.status = 1 AND ( versions.sharing = 'system' OR (projects.lft >= 1 AND projects.rgt <= 2 AND versions.sharing = 'tree') OR (projects.lft < 1 AND projects.rgt > 2 AND versions.sharing IN ('hierarchy', 'descendants')) OR (projects.lft > 1 AND projects.rgt < 2 AND versions.sharing = 'hierarchy')))) [0m
+  [4;36;1mWiki Load (0.2ms)[0m   [0;1mSELECT * FROM "wikis" WHERE ("wikis".project_id = 1) LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT count(*) AS count_all FROM "boards" WHERE ("boards".project_id = 1) [0m
+  [4;36;1mRepository Load (0.2ms)[0m   [0;1mSELECT * FROM "repositories" WHERE ("repositories".project_id = 1) LIMIT 1[0m
+Completed in 715ms (View: 530, DB: 7) | 200 OK [http://localhost/projects/gen-plugin]
+
+
+Processing IssueTemplatesController#index (for 127.0.0.1 at 2011-01-22 15:31:51) [GET]
+  Parameters: {"action"=>"index", "id"=>"gen-plugin", "controller"=>"issue_templates"}
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT max("settings".updated_on) AS max_updated_on FROM "settings" [0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 3) AND (users.status = 1) AND ( ("users"."type" = 'User' OR "users"."type" = 'AnonymousUser' ) ) [0m
+  [4;35;1mProject Load (0.3ms)[0m   [0mSELECT * FROM "projects" WHERE ("projects"."identifier" = 'gen-plugin') LIMIT 1[0m
+Rendering template within layouts/base
+Rendering issue_templates/index
+  [4;36;1mSetting Load (0.2ms)[0m   [0;1mSELECT * FROM "settings" WHERE ("settings"."name" = 'app_title') LIMIT 1[0m
+  [4;35;1mSetting Load (0.3ms)[0m   [0mSELECT * FROM "settings" WHERE ("settings"."name" = 'ui_theme') LIMIT 1[0m
+  [4;36;1mSetting Load (0.2ms)[0m   [0;1mSELECT * FROM "settings" WHERE ("settings"."name" = 'text_formatting') LIMIT 1[0m
+  [4;35;1mProject Load (0.4ms)[0m   [0mSELECT "projects".* FROM "projects" INNER JOIN "members" ON "projects".id = "members".project_id WHERE (("members".user_id = 3) AND ((projects.status=1))) [0m
+  [4;36;1mEnabledModule Load (0.3ms)[0m   [0;1mSELECT name FROM "enabled_modules" WHERE ("enabled_modules".project_id = 1) [0m
+  [4;35;1mProject Load (0.3ms)[0m   [0mSELECT * FROM "projects" WHERE (projects."lft" <= 1 AND projects."rgt" >= 2) ORDER BY "lft" LIMIT 1[0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "projects" WHERE (projects."lft" <= 1 AND projects."rgt" >= 2) ORDER BY "lft" LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT count(DISTINCT "versions".id) AS count_all FROM "versions" LEFT OUTER JOIN "projects" ON "projects".id = "versions".project_id WHERE (projects.id = 1 OR (projects.status = 1 AND ( versions.sharing = 'system' OR (projects.lft >= 1 AND projects.rgt <= 2 AND versions.sharing = 'tree') OR (projects.lft < 1 AND projects.rgt > 2 AND versions.sharing IN ('hierarchy', 'descendants')) OR (projects.lft > 1 AND projects.rgt < 2 AND versions.sharing = 'hierarchy')))) [0m
+  [4;35;1mWiki Load (0.3ms)[0m   [0mSELECT * FROM "wikis" WHERE ("wikis".project_id = 1) LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT count(*) AS count_all FROM "boards" WHERE ("boards".project_id = 1) [0m
+  [4;35;1mRepository Load (0.2ms)[0m   [0mSELECT * FROM "repositories" WHERE ("repositories".project_id = 1) LIMIT 1[0m
+Completed in 648ms (View: 620, DB: 4) | 200 OK [http://localhost/issue_templates/index/gen-plugin]
+
+
+Processing IssueTemplatesController#index (for 127.0.0.1 at 2011-01-22 15:32:46) [GET]
+  Parameters: {"action"=>"index", "id"=>"gen-plugin", "controller"=>"issue_templates"}
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT max("settings".updated_on) AS max_updated_on FROM "settings" [0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 3) AND (users.status = 1) AND ( ("users"."type" = 'User' OR "users"."type" = 'AnonymousUser' ) ) [0m
+  [4;36;1mProject Load (0.2ms)[0m   [0;1mSELECT * FROM "projects" WHERE ("projects"."identifier" = 'gen-plugin') LIMIT 1[0m
+Rendering template within layouts/base
+Rendering issue_templates/index
+  [4;35;1mSetting Load (0.2ms)[0m   [0mSELECT * FROM "settings" WHERE ("settings"."name" = 'app_title') LIMIT 1[0m
+  [4;36;1mSetting Load (0.2ms)[0m   [0;1mSELECT * FROM "settings" WHERE ("settings"."name" = 'ui_theme') LIMIT 1[0m
+  [4;35;1mSetting Load (0.2ms)[0m   [0mSELECT * FROM "settings" WHERE ("settings"."name" = 'text_formatting') LIMIT 1[0m
+  [4;36;1mProject Load (0.4ms)[0m   [0;1mSELECT "projects".* FROM "projects" INNER JOIN "members" ON "projects".id = "members".project_id WHERE (("members".user_id = 3) AND ((projects.status=1))) [0m
+  [4;35;1mEnabledModule Load (0.4ms)[0m   [0mSELECT name FROM "enabled_modules" WHERE ("enabled_modules".project_id = 1) [0m
+  [4;36;1mProject Load (0.3ms)[0m   [0;1mSELECT * FROM "projects" WHERE (projects."lft" <= 1 AND projects."rgt" >= 2) ORDER BY "lft" LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "projects" WHERE (projects."lft" <= 1 AND projects."rgt" >= 2) ORDER BY "lft" LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT count(DISTINCT "versions".id) AS count_all FROM "versions" LEFT OUTER JOIN "projects" ON "projects".id = "versions".project_id WHERE (projects.id = 1 OR (projects.status = 1 AND ( versions.sharing = 'system' OR (projects.lft >= 1 AND projects.rgt <= 2 AND versions.sharing = 'tree') OR (projects.lft < 1 AND projects.rgt > 2 AND versions.sharing IN ('hierarchy', 'descendants')) OR (projects.lft > 1 AND projects.rgt < 2 AND versions.sharing = 'hierarchy')))) [0m
+  [4;36;1mWiki Load (0.3ms)[0m   [0;1mSELECT * FROM "wikis" WHERE ("wikis".project_id = 1) LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT count(*) AS count_all FROM "boards" WHERE ("boards".project_id = 1) [0m
+  [4;36;1mRepository Load (0.2ms)[0m   [0;1mSELECT * FROM "repositories" WHERE ("repositories".project_id = 1) LIMIT 1[0m
+Completed in 662ms (View: 637, DB: 4) | 200 OK [http://localhost/issue_templates/index/gen-plugin]
+
+
+Processing IssueTemplatesController#index (for 127.0.0.1 at 2011-01-22 15:32:56) [GET]
+  Parameters: {"action"=>"index", "id"=>"gen-plugin", "controller"=>"issue_templates"}
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT max("settings".updated_on) AS max_updated_on FROM "settings" [0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 3) AND (users.status = 1) AND ( ("users"."type" = 'User' OR "users"."type" = 'AnonymousUser' ) ) [0m
+  [4;36;1mProject Load (0.3ms)[0m   [0;1mSELECT * FROM "projects" WHERE ("projects"."identifier" = 'gen-plugin') LIMIT 1[0m
+Rendering template within layouts/base
+Rendering issue_templates/index
+  [4;35;1mSetting Load (6.6ms)[0m   [0mSELECT * FROM "settings" WHERE ("settings"."name" = 'app_title') LIMIT 1[0m
+  [4;36;1mSetting Load (0.3ms)[0m   [0;1mSELECT * FROM "settings" WHERE ("settings"."name" = 'ui_theme') LIMIT 1[0m
+  [4;35;1mSetting Load (0.2ms)[0m   [0mSELECT * FROM "settings" WHERE ("settings"."name" = 'text_formatting') LIMIT 1[0m
+  [4;36;1mProject Load (0.3ms)[0m   [0;1mSELECT "projects".* FROM "projects" INNER JOIN "members" ON "projects".id = "members".project_id WHERE (("members".user_id = 3) AND ((projects.status=1))) [0m
+  [4;35;1mEnabledModule Load (0.4ms)[0m   [0mSELECT name FROM "enabled_modules" WHERE ("enabled_modules".project_id = 1) [0m
+  [4;36;1mProject Load (0.4ms)[0m   [0;1mSELECT * FROM "projects" WHERE (projects."lft" <= 1 AND projects."rgt" >= 2) ORDER BY "lft" LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "projects" WHERE (projects."lft" <= 1 AND projects."rgt" >= 2) ORDER BY "lft" LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT count(DISTINCT "versions".id) AS count_all FROM "versions" LEFT OUTER JOIN "projects" ON "projects".id = "versions".project_id WHERE (projects.id = 1 OR (projects.status = 1 AND ( versions.sharing = 'system' OR (projects.lft >= 1 AND projects.rgt <= 2 AND versions.sharing = 'tree') OR (projects.lft < 1 AND projects.rgt > 2 AND versions.sharing IN ('hierarchy', 'descendants')) OR (projects.lft > 1 AND projects.rgt < 2 AND versions.sharing = 'hierarchy')))) [0m
+  [4;36;1mWiki Load (0.2ms)[0m   [0;1mSELECT * FROM "wikis" WHERE ("wikis".project_id = 1) LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT count(*) AS count_all FROM "boards" WHERE ("boards".project_id = 1) [0m
+  [4;36;1mRepository Load (0.2ms)[0m   [0;1mSELECT * FROM "repositories" WHERE ("repositories".project_id = 1) LIMIT 1[0m
+Completed in 716ms (View: 674, DB: 10) | 200 OK [http://localhost/issue_templates/index/gen-plugin]
+
+
+Processing IssueTemplatesController#index (for 127.0.0.1 at 2011-01-22 15:33:18) [GET]
+  Parameters: {"action"=>"index", "id"=>"gen-plugin", "controller"=>"issue_templates"}
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT max("settings".updated_on) AS max_updated_on FROM "settings" [0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 3) AND (users.status = 1) AND ( ("users"."type" = 'User' OR "users"."type" = 'AnonymousUser' ) ) [0m
+  [4;36;1mProject Load (0.2ms)[0m   [0;1mSELECT * FROM "projects" WHERE ("projects"."identifier" = 'gen-plugin') LIMIT 1[0m
+Rendering template within layouts/base
+Rendering issue_templates/index
+  [4;35;1mSetting Load (6.8ms)[0m   [0mSELECT * FROM "settings" WHERE ("settings"."name" = 'app_title') LIMIT 1[0m
+  [4;36;1mSetting Load (0.3ms)[0m   [0;1mSELECT * FROM "settings" WHERE ("settings"."name" = 'ui_theme') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM "settings" WHERE ("settings"."name" = 'text_formatting') LIMIT 1[0m
+  [4;36;1mProject Load (0.3ms)[0m   [0;1mSELECT "projects".* FROM "projects" INNER JOIN "members" ON "projects".id = "members".project_id WHERE (("members".user_id = 3) AND ((projects.status=1))) [0m
+  [4;35;1mEnabledModule Load (0.4ms)[0m   [0mSELECT name FROM "enabled_modules" WHERE ("enabled_modules".project_id = 1) [0m
+  [4;36;1mProject Load (0.3ms)[0m   [0;1mSELECT * FROM "projects" WHERE (projects."lft" <= 1 AND projects."rgt" >= 2) ORDER BY "lft" LIMIT 1[0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "projects" WHERE (projects."lft" <= 1 AND projects."rgt" >= 2) ORDER BY "lft" LIMIT 1[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT count(DISTINCT "versions".id) AS count_all FROM "versions" LEFT OUTER JOIN "projects" ON "projects".id = "versions".project_id WHERE (projects.id = 1 OR (projects.status = 1 AND ( versions.sharing = 'system' OR (projects.lft >= 1 AND projects.rgt <= 2 AND versions.sharing = 'tree') OR (projects.lft < 1 AND projects.rgt > 2 AND versions.sharing IN ('hierarchy', 'descendants')) OR (projects.lft > 1 AND projects.rgt < 2 AND versions.sharing = 'hierarchy')))) [0m
+  [4;36;1mWiki Load (0.3ms)[0m   [0;1mSELECT * FROM "wikis" WHERE ("wikis".project_id = 1) LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT count(*) AS count_all FROM "boards" WHERE ("boards".project_id = 1) [0m
+  [4;36;1mRepository Load (0.2ms)[0m   [0;1mSELECT * FROM "repositories" WHERE ("repositories".project_id = 1) LIMIT 1[0m
+Completed in 722ms (View: 680, DB: 10) | 200 OK [http://localhost/issue_templates/index/gen-plugin]

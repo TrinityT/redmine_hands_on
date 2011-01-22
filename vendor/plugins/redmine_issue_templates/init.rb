@@ -15,6 +15,7 @@ Redmine::Plugin.register :redmine_issue_templates do
     permission :show_issue_templates, {:issue_templates => [:index, :show, :load]}
   end
 
-  menu :project_menu, :issue_templates, { :controller => 'issue_templates', :action => 'index' }, :caption => 'テンプレ', :after => 'issues'
-
+  menu :project_menu, :issue_templates, { :controller => 'issue_templates', :action => 'index' },
+       :caption => 'チケットテンプレート', :after => :issues
 end
+
