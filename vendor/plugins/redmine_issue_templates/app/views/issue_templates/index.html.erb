@@ -2,3 +2,23 @@
 
 <%= link_to '新規作成', :action => :create, :id => @project %>
 
+<table class="list">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th><%=h l(:field_title)%></th>
+      <th><%=h l(:field_updated_on)%></th>
+      <th>メモ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @issue_templates.each do |template| %>
+      <tr class="<%= cycle('odd', 'even')%>">
+        <td><%= template.id %></td>
+        <td><%= link_to h(template.title), :action => 'show', :id => @project, :template_id => template.id %></td>
+        <td><%= format_time(template.updated_at)%> </td>
+        <td><%=h template.note%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
